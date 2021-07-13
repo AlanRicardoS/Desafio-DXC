@@ -21,7 +21,7 @@ public class User  implements Serializable {
     private String name;
     @Column(nullable = false)
     private String email;
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     @Column(nullable = false)
     private Date dataNascimento;
     public static User create(UserDTO userDTO){

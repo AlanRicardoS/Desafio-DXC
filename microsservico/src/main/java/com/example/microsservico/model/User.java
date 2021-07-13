@@ -2,9 +2,11 @@ package com.example.microsservico.model;
 
 import com.example.microsservico.dto.UserDTO;
 import org.modelmapper.ModelMapper;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Alan Ricardo
@@ -19,7 +21,9 @@ public class User  implements Serializable {
     private String name;
     @Column(nullable = false)
     private String email;
-
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @Column(nullable = false)
+    private Date dataNascimento;
     public static User create(UserDTO userDTO){
         return new ModelMapper().map(userDTO, User.class);
     }

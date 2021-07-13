@@ -54,4 +54,12 @@ public class User  implements Serializable {
     public void setEmail(final String email) {
         this.email = email;
     }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(final Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 }

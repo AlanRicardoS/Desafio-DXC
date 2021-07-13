@@ -1,5 +1,8 @@
 package com.example.microsservico.model;
 
+import com.example.microsservico.dto.UserDTO;
+import org.modelmapper.ModelMapper;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,6 +20,9 @@ public class User  implements Serializable {
     @Column(nullable = false)
     private String email;
 
+    public static User create(UserDTO userDTO){
+        return new ModelMapper().map(userDTO, User.class);
+    }
 
     public User() {
     }

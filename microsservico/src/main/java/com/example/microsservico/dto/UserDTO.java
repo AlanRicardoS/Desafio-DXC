@@ -4,6 +4,7 @@ import com.example.microsservico.model.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.RepresentationModel;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Alan Ricardo
@@ -13,6 +14,7 @@ public class UserDTO extends RepresentationModel<UserDTO> implements Serializabl
     private Long id;
     private String name;
     private String email;
+    private Date dataNascimento;
 
     public static UserDTO create(User user) {
         return new ModelMapper().map(user, UserDTO.class);
@@ -40,5 +42,13 @@ public class UserDTO extends RepresentationModel<UserDTO> implements Serializabl
 
     public void setEmail(final String email) {
         this.email = email;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(final Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }

@@ -1,6 +1,9 @@
 package com.example.microsservico.dto;
 
 import com.example.microsservico.model.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.RepresentationModel;
 import java.io.Serializable;
@@ -9,11 +12,16 @@ import java.util.Date;
 /**
  * @author Alan Ricardo
  */
-
+@JsonPropertyOrder({"id", "name", "email", "dataNascimento"})
 public class UserDTO extends RepresentationModel<UserDTO> implements Serializable {
+    @JsonProperty("id")
     private Long id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("email")
     private String email;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonProperty("dataNascimento")
     private Date dataNascimento;
 
     public static UserDTO create(User user) {

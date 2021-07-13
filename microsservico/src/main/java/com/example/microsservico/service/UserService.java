@@ -31,4 +31,8 @@ public class UserService {
         UserDTO userDTOReturn = UserDTO.create(userRepository.save(User.create(userDTO)));
         return userDTOReturn;
     }
+    public UserDTO findById(Long id){
+        var user = userRepository.findById(id).orElseThrow(()-> new RuntimeException("Nenhum user com id" + id));
+        return convertToUserDTO(user);
+    }
 }

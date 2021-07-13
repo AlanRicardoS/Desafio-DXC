@@ -35,4 +35,9 @@ public class UserService {
         var user = userRepository.findById(id).orElseThrow(()-> new RuntimeException("Nenhum user com id" + id));
         return convertToUserDTO(user);
     }
+    public UserDTO updateUser(UserDTO userDTO){
+        var optionalUser = findById(userDTO.getId());
+        return convertToUserDTO(userRepository.save(User.create(userDTO)));
+    }
+    
 }

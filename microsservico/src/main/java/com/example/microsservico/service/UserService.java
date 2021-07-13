@@ -27,5 +27,8 @@ public class UserService {
         var page = userRepository.findAll(pageable);
         return page.map(this::convertToUserDTO);
     }
-    
+    public UserDTO createUser(UserDTO userDTO){
+        UserDTO userDTOReturn = UserDTO.create(userRepository.save(User.create(userDTO)));
+        return userDTOReturn;
+    }
 }

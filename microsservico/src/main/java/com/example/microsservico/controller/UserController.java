@@ -62,5 +62,10 @@ public class UserController {
         userDTOReturno.add(linkTo(methodOn(UserController.class).findById(userDTO.getId())).withSelfRel());
         return userDTOReturno;
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id){
+        userService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

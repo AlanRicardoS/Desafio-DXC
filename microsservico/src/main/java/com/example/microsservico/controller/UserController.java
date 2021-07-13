@@ -55,7 +55,7 @@ public class UserController {
     @PostMapping(
             produces = {"application/json", "application/xml", "application/x-yaml"},
             consumes = {"application/json", "application/xml", "application/x-yaml"})
-    public UserDTO create(@PathVariable UserDTO userDTO){
+    public UserDTO create(@RequestBody UserDTO userDTO){
         UserDTO userDTOReturn = userService.createUser(userDTO);
         userDTOReturn.add(linkTo(methodOn(UserController.class).findById(userDTOReturn.getId())).withSelfRel());
         return userDTOReturn;

@@ -54,5 +54,13 @@ public class UserController {
         userDTOReturn.add(linkTo(methodOn(UserController.class).findById(userDTOReturn.getId())).withSelfRel());
         return userDTOReturn;
     }
+    @PutMapping(
+            produces = {"application/json", "application/xml", "application/x-yaml"},
+            consumes = {"application/json", "application/xml", "application/x-yaml"})
+    public UserDTO update(@RequestBody UserDTO userDTO){
+        UserDTO userDTOReturno = userService.updateUser(userDTO);
+        userDTOReturno.add(linkTo(methodOn(UserController.class).findById(userDTO.getId())).withSelfRel());
+        return userDTOReturno;
+    }
 
 }

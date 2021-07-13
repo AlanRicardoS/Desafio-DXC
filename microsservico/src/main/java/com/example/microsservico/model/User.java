@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Alan Ricardo
  */
 @Entity
-@Table(name = "user_tbl")
+@Table(name = "tb_user")
 public class User  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

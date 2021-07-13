@@ -39,5 +39,8 @@ public class UserService {
         var optionalUser = findById(userDTO.getId());
         return convertToUserDTO(userRepository.save(User.create(userDTO)));
     }
-    
+    public void delete(Long id){
+        var userDTO = findById(id);
+        userRepository.delete(User.create(userDTO));
+    }
 }

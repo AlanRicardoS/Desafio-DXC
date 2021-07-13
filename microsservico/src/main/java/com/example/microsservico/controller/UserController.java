@@ -46,5 +46,13 @@ public class UserController {
         });
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+    @PostMapping(
+            produces = {"application/json", "application/xml", "application/x-yaml"},
+            consumes = {"application/json", "application/xml", "application/x-yaml"})
+    public UserDTO create(@PathVariable UserDTO userDTO){
+        UserDTO userDTOReturn = userService.createUser(userDTO);
+        userDTOReturn.add(linkTo(methodOn(UserController.class).findById(userDTOReturn.getId())).withSelfRel());
+        return userDTOReturn;
+    }
 
 }

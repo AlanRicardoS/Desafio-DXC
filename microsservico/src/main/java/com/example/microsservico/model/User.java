@@ -1,13 +1,14 @@
 package com.example.microsservico.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author Alan Ricardo
  */
 @Entity
 @Table(name = "user_tbl")
-public class User {
+public class User  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,6 +16,7 @@ public class User {
     private String name;
     @Column(nullable = false)
     private String email;
+
 
     public User() {
     }
